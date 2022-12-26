@@ -20,8 +20,8 @@ function createMaterialArray() {
 }
 
 function createPathStrings() {
-  const basePath = "/static/skybox1";
-  const fileType = "png";
+  const basePath = "/static/daylight_box";
+  const fileType = "bmp";
   return [...Array(6)].map(
     (_, index) => `${basePath}/${index + 1}.${fileType}`
   );

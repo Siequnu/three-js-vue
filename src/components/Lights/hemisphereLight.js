@@ -16,7 +16,7 @@ const hemiLuminousIrradiances = {
 };
 
 function createHemisphereLight() {
-  return new HemisphereLight(0xddeeff, 0x0f0e0d, 0.5);
+  return new HemisphereLight(0xffffff, 0xffffff, 0.6);
 }
 
 export { createHemisphereLight };

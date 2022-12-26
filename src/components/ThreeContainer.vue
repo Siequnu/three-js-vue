@@ -8,6 +8,8 @@ import { createCamera } from "../components/Camera/camera";
 
 import { createBulbLight } from "../components/Lights/bulbLight";
 import { createHemisphereLight } from "../components/Lights/hemisphereLight";
+import { createSunLight } from "../components/Lights/sunLight";
+
 import { createFloorMat, createFloorMesh } from "../components/Objects/floor";
 import { createCubeMat, createCubeMesh } from "../components/Objects/cube";
 import { createBallMat, createBallMesh } from "../components/Objects/ball";
@@ -21,8 +23,9 @@ import { orbitControls } from "../components/Controls/orbitControls";
 
 import { createPorsche } from "../components/Objects/porsche";
 import { createLamp } from "../components/Objects/desk_lamp";
+import { createBed } from "../components/Objects/bed";
 
-let camera, scene, renderer, bulbLight, bulbMat, hemiLight, controls;
+let camera, scene, renderer, bulbLight, controls;
 
 export default {
   mounted() {
@@ -35,11 +38,9 @@ export default {
 
       scene = new Scene();
 
-      ({ bulbLight, bulbMat } = createBulbLight());
-      scene.add(bulbLight);
-
-      hemiLight = createHemisphereLight();
-      scene.add(hemiLight);
+      scene.add(createBulbLight());
+      scene.add(createHemisphereLight());
+      scene.add(createSunLight());
 
       scene.add(createFloorMesh(createFloorMat()));
       scene.add(createBallMesh(createBallMat()));
@@ -54,10 +55,10 @@ export default {
         createWallMesh({ x: 5, y: 0.25, z: 9 }, { x: 10, y: 4, z: 0.3 })
       );
 
-      createLamp(scene);
       createSkyBox(scene);
 
-      //createPorsche(scene);
+      createBed(scene);
+      createLamp(scene);
 
       const container = document.getElementById("container");
       renderer = createRenderer();
@@ -82,9 +83,7 @@ export default {
     },
 
     render() {
-      //renderer.toneMappingExposure = Math.pow(params.exposure, 5.0); // to allow for very bright scenes.
       renderer.shadowMap.enabled = true;
-      bulbLight.castShadow = true;
 
       controls.movementSpeed = 0.5;
       controls.update(0.3);
