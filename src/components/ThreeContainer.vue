@@ -11,17 +11,16 @@ import { createHemisphereLight } from "../components/Lights/hemisphereLight";
 import { createFloorMat, createFloorMesh } from "../components/Objects/floor";
 import { createCubeMat, createCubeMesh } from "../components/Objects/cube";
 import { createBallMat, createBallMesh } from "../components/Objects/ball";
+import { createWallMesh } from "../components/Objects/wall";
 
 import { createRenderer } from "../components/Renderer/renderer";
 
 import { createFirstPersonControls } from "../components/Controls/firstPersonControls";
 
 import { createPorsche } from "../components/Objects/porsche";
+import { createLamp } from "../components/Objects/desk_lamp";
 
 let camera, scene, renderer, bulbLight, bulbMat, hemiLight, controls;
-let ballMat, cubeMat, floorMat;
-
-let previousShadowMap = false;
 
 export default {
   mounted() {
@@ -40,17 +39,22 @@ export default {
       hemiLight = createHemisphereLight();
       scene.add(hemiLight);
 
-      ballMat = createBallMat();
-      cubeMat = createCubeMat();
-      floorMat = createFloorMat();
+      scene.add(createFloorMesh(createFloorMat()));
+      scene.add(createBallMesh(createBallMat()));
+      scene.add(createCubeMesh(createCubeMat(), { x: -0.7, y: 0.25, z: -1 }));
+      scene.add(createCubeMesh(createCubeMat(), { x: 0, y: 0.25, z: -5 }));
+      scene.add(createCubeMesh(createCubeMat(), { x: 7, y: 0.25, z: 0 }));
 
-      scene.add(createFloorMesh(floorMat));
-      scene.add(createBallMesh(ballMat));
-      scene.add(createCubeMesh(cubeMat, { x: -0.7, y: 0.25, z: -1 }));
-      scene.add(createCubeMesh(cubeMat, { x: 0, y: 0.25, z: -5 }));
-      scene.add(createCubeMesh(cubeMat, { x: 7, y: 0.25, z: 0 }));
+      scene.add(
+        createWallMesh({ x: 5, y: 0.25, z: -9 }, { x: 10, y: 4, z: 0.3 })
+      );
+      scene.add(
+        createWallMesh({ x: 5, y: 0.25, z: 9 }, { x: 10, y: 4, z: 0.3 })
+      );
 
-      createPorsche(scene);
+      createLamp(scene);
+
+      //createPorsche(scene);
 
       const container = document.getElementById("container");
       renderer = createRenderer();
