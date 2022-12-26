@@ -1,12 +1,12 @@
 <template>
-  <SingleThreeContainer />
+  <ThreeContainer />
 </template>
 
 <script>
-import SingleThreeContainer from "./components/SingleThreeContainer.vue";
+import ThreeContainer from "./components/ThreeContainer.vue";
 export default {
   components: {
-    SingleThreeContainer,
+    ThreeContainer,
   },
 };
 </script>
