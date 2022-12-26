@@ -12,10 +12,12 @@ import { createFloorMat, createFloorMesh } from "../components/Objects/floor";
 import { createCubeMat, createCubeMesh } from "../components/Objects/cube";
 import { createBallMat, createBallMesh } from "../components/Objects/ball";
 import { createWallMesh } from "../components/Objects/wall";
+import { createSkyBox } from "../components/Objects/skyBox";
 
 import { createRenderer } from "../components/Renderer/renderer";
 
 import { createFirstPersonControls } from "../components/Controls/firstPersonControls";
+import { orbitControls } from "../components/Controls/orbitControls";
 
 import { createPorsche } from "../components/Objects/porsche";
 import { createLamp } from "../components/Objects/desk_lamp";
@@ -53,6 +55,7 @@ export default {
       );
 
       createLamp(scene);
+      createSkyBox(scene);
 
       //createPorsche(scene);
 
@@ -60,7 +63,8 @@ export default {
       renderer = createRenderer();
       container.appendChild(renderer.domElement);
 
-      controls = createFirstPersonControls(camera, renderer);
+      //controls = createFirstPersonControls(camera, renderer);
+      controls = orbitControls(camera, renderer);
 
       window.addEventListener("resize", this.onWindowResize);
     },
