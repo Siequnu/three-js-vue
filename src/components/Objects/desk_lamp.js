@@ -6,6 +6,8 @@ function createLamp(scene) {
   loader.load(
     "/static/desk_lamp/scene.gltf",
     function (gltf) {
+      const scale = 0.3;
+      gltf.scene.scale.set(scale, scale, scale);
       scene.add(gltf.scene);
     },
     undefined,

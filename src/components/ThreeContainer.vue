@@ -38,12 +38,11 @@ export default {
 
       scene = new Scene();
 
-      scene.add(createBulbLight());
-      scene.add(createHemisphereLight());
-      scene.add(createSunLight());
+      scene.add(createHemisphereLight(0.1));
+      //scene.add(createSunLight());
 
       scene.add(createFloorMesh(createFloorMat()));
-      scene.add(createBallMesh(createBallMat()));
+      //scene.add(createBallMesh(createBallMat()));
       scene.add(createCubeMesh(createCubeMat(), { x: -0.7, y: 0.25, z: -1 }));
       scene.add(createCubeMesh(createCubeMat(), { x: 0, y: 0.25, z: -5 }));
       scene.add(createCubeMesh(createCubeMat(), { x: 7, y: 0.25, z: 0 }));
@@ -55,7 +54,7 @@ export default {
         createWallMesh({ x: 5, y: 0.25, z: 9 }, { x: 10, y: 4, z: 0.3 })
       );
 
-      createSkyBox(scene);
+      //createSkyBox(scene);
 
       createBed(scene);
       createLamp(scene);

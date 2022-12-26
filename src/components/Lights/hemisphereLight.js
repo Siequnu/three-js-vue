@@ -15,8 +15,8 @@ const hemiLuminousIrradiances = {
   "50000 lx (Direct Sun)": 50000,
 };
 
-function createHemisphereLight() {
-  return new HemisphereLight(0xffffff, 0xffffff, 0.6);
+function createHemisphereLight(intensity) {
+  return new HemisphereLight(0xffffff, 0xffffff, intensity);
 }
 
 export { createHemisphereLight };

@@ -13,9 +13,9 @@ const bulbLuminousPowers = {
 
 //bulbMat.emissiveIntensity = bulbLight.intensity / Math.pow(0.02, 2.0); // convert from intensity to irradiance at bulb surface
 
-function createBulbLight() {
+function createBulbLight(intensity = 5, position = { x: 0, y: 2, z: 0 }) {
   const bulbGeometry = new SphereGeometry(0.02, 16, 8);
-  let bulbLight = new PointLight(0xffee88, 1, 100, 2);
+  let bulbLight = new PointLight(0xffee88, intensity, 100, 2);
 
   let bulbMat = new MeshStandardMaterial({
     emissive: 0xffffee,
@@ -23,7 +23,7 @@ function createBulbLight() {
     color: 0x000000,
   });
   bulbLight.add(new Mesh(bulbGeometry, bulbMat));
-  bulbLight.position.set(0, 2, 0);
+  bulbLight.position.set(position.x, position.y, position.z);
   bulbLight.castShadow = true;
 
   return bulbLight;
