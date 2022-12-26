@@ -42,14 +42,10 @@ export default {
       //scene.add(createSunLight());
 
       scene.add(createFloorMesh(createFloorMat()));
-      //scene.add(createBallMesh(createBallMat()));
-      scene.add(createCubeMesh(createCubeMat(), { x: -0.7, y: 0.25, z: -1 }));
-      scene.add(createCubeMesh(createCubeMat(), { x: 0, y: 0.25, z: -5 }));
-      scene.add(createCubeMesh(createCubeMat(), { x: 7, y: 0.25, z: 0 }));
 
-      scene.add(
-        createWallMesh({ x: 5, y: 0.25, z: -9 }, { x: 10, y: 4, z: 0.3 })
-      );
+      scene.add(createCubeMesh(createCubeMat(), { x: -0.7, y: 0.25, z: -1 }));
+
+      scene.add(createWallMesh({ x: 5, y: 1, z: -2 }, { x: 10, y: 2, z: 0.3 }));
       scene.add(
         createWallMesh({ x: 5, y: 0.25, z: 9 }, { x: 10, y: 4, z: 0.3 })
       );
@@ -57,7 +53,6 @@ export default {
       //createSkyBox(scene);
 
       createBed(scene);
-      createLamp(scene);
 
       const container = document.getElementById("container");
       renderer = createRenderer();
